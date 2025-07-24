@@ -7,10 +7,10 @@
   <script>
     function sendMessageToFlutter(message) {
       // Flutter로 메시지 전송
-      if (window.FlutterChannel) {
-        window.FlutterChannel.postMessage(message);
+      if (window.closeWebView) {
+        window.closeWebView.postMessage(message);
       } else {
-        console.log("FlutterChannel is not available");
+        console.log("closeWebView is not available");
       }
     }
 
