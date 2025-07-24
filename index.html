@@ -1,97 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flutter WebView Test</title>
+  <script>
+    function sendMessageToFlutter(message) {
+      // Flutter로 메시지 전송
+      if (window.FlutterChannel) {
+        window.FlutterChannel.postMessage(message);
+      } else {
+        console.log("FlutterChannel is not available");
+      }
+    }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="fms_app">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>fms_app</title>
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Firebase SDK 추가 -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging.js"></script>
+    function receiveMessageFromFlutter() {
+      alert("Flutter에서 메시지를 받았습니다!");
+    }
+  </script>
 </head>
 <body>
-  <!-- Firebase 초기화 및 FCM 설정 -->
-  <script>
-    // Firebase 설정
-    const firebaseConfig = {
-    apiKey: "AIzaSyDZKrZA67bB-Z4_anj0G6v0MFqQwFF2q5s",
-    authDomain: "fms-sample-79335.firebaseapp.com",
-    projectId: "fms-sample-79335",
-    storageBucket: "fms-sample-79335.firebasestorage.app",
-    messagingSenderId: "737594140295",
-    appId: "1:737594140295:web:b3c0482a7608f7a6073a22",
-    measurementId: "G-QVSZ8XKS18"
-  };
-
-    // Firebase 초기화
-    const app = firebase.initializeApp(firebaseConfig);
-    const messaging = firebase.messaging();
-
-    // 알림 권한 요청
-    messaging.requestPermission()
-      .then(() => {
-        console.log('알림 권한이 허용되었습니다.');
-        return messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
-      })
-      .then((token) => {
-        console.log('FCM 토큰:', token);
-        // 서버로 토큰 전송 또는 테스트에 사용
-      })
-      .catch((error) => {
-        console.error('권한 요청 또는 토큰 가져오기 실패:', error);
-      });
-
-    // 수신 메시지 처리
-    messaging.onMessage((payload) => {
-      console.log('메시지 수신:', payload);
-      const notificationTitle = payload.notification.title;
-      const notificationOptions = {
-        body: payload.notification.body,
-        icon: payload.notification.icon
-      };
-
-      if (Notification.permission === 'granted') {
-        new Notification(notificationTitle, notificationOptions);
-      }
-    });
-  </script>
-
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('firebase-messaging-sw.js')
-      .then(function (registration) {
-        console.log('Service Worker Registered');
-      });
-  }
-</script>
-
-  <script src="flutter_bootstrap.js" async></script>
+  <h1>Flutter WebView 테스트</h1>
+  <button onclick="sendMessageToFlutter('안녕하세요, JavaScript에서 보냅니다!')">Flutter로 메시지 보내기</button>
 </body>
 </html>
