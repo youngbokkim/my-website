@@ -1,25 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nate WebView Test</title>
+  <title>Nate WebView OS 구분 테스트</title>
   <script>
-     function sendMessageToiOS() {
-      if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.closeWebview) {
-        window.webkit.messageHandlers.closeWebview.postMessage("Hello from JavaScript!");
+    function getOSType() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+      } else if (/android/i.test(userAgent)) {
+        return "Android";
       } else {
-        alert("iOS 메시지 핸들러를 찾을 수 없습니다.");
+        return "Web";
       }
     }
 
+    function sendMessage() {
+      const osType = getOSType();
+
+      if (osType === "iOS") {
+        if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.closeWebview) {
+          window.webkit.messageHandlers.closeWebview.postMessage("Hello from JavaScript to iOS!");
+        } else {
+          alert("iOS 메시지 핸들러를 찾을 수 없습니다.");
+        }
+      } else if (osType === "Android") {
+        if (window.android.closeWebview) {
+          window.android.closeWebview;
+        } else {
+          alert("Android 메시지 핸들러를 찾을 수 없습니다.");
+        }
+      } else {
+        alert("지원되지 않는 플랫폼입니다.");
+      }
+    }
+
+    // Native로부터 메시지 수신 함수들
     function receiveMessageFromFlutter() {
-      alert("Flutter에서 메시지를 받았습니다!");
+      alert("✅ Flutter에서 메시지를 받았습니다!");
+    }
+
+    function receiveMessageFromAndroid(msg) {
+      alert("✅ Android에서 받은 메시지: " + msg);
+    }
+
+    function receiveMessageFromiOS(msg) {
+      alert("✅ iOS에서 받은 메시지: " + msg);
     }
   </script>
 </head>
 <body>
-  <h1>Nate 혜택 WebView 테스트</h1>
-  <button onclick="sendMessageToiOS('안녕하세요, JavaScript에서 보냅니다!')">iOS로 메시지 보내기</button>
+  <h1>Nate WebView OS 구분 테스트</h1>
+
+  <button onclick="sendMessage()">📤 OS에 맞게 메시지 전송</button>
 </body>
 </html>
