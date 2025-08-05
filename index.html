@@ -22,7 +22,7 @@
 
       if (osType === "iOS") {
         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.closeWebview) {
-          window.webkit.messageHandlers.closeWebview.postMessage("Hello from JavaScript to iOS!");
+          window.webkit.messageHandlers.closeWebview();
         } else {
           alert("iOS 메시지 핸들러를 찾을 수 없습니다.");
         }
