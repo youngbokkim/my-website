@@ -1,132 +1,116 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #fc6a5d; background-color: #1f1f24}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #ffffff; color: rgba(255, 255, 255, 0.85); background-color: #1f1f24; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;!doctype html&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;html lang="ko"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;title&gt;네이트온 선물하기&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-family: sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>background-color: #f4f7f6;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>width: 80%;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>max-width: 400px;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>p {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin-bottom: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>.btn-open {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 12px 24px;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>background-color: #007bff;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>.btn-open:hover {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>background-color: #0056b3;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container" id="validContainer" style="display: none"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h1&gt;서비스를 앱에서 확인하세요&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;앱이 설치되어 있으면 바로 이동하고,&lt;br /&gt;없으시면 설치 페이지로 안내합니다.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;button onclick="openDeepLink()" class="btn-open"&gt;앱 열기 / 설치하기&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container" id="invalidContainer" style="display: none"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h1&gt;잘못된 접근입니다.&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>const params = new URLSearchParams(window.location.search)</p>
-<p class="p1"><span class="Apple-converted-space">              </span>const goodsId = params.get('goodsId')</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>if (goodsId !== null &amp;&amp; goodsId !== '') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('validContainer').style.display = ''</p>
-<p class="p1"><span class="Apple-converted-space">                </span>openDeepLink()</p>
-<p class="p1"><span class="Apple-converted-space">              </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('invalidContainer').style.display = ''</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>function openDeepLink() {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const config = {</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>iosScheme: 'nateonuc://giftshow-share?product_id=' + goodsId,</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>androidIntent:</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>'intent://giftshow-share?product_id=' + goodsId + '#Intent;scheme=nateonuc;package=Uxpp.UC;end',</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>appStore: 'https://apps.apple.com/kr/app/id362693357',</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>playStore: 'https://play.google.com/store/apps/details?id=Uxpp.UC&amp;hl=ko',</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>const userAgent = navigator.userAgent.toLowerCase()</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const isAndroid = /android/i.test(userAgent)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const isIos = /iphone|ipad|ipod/i.test(userAgent)</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>const startTime = Date.now()</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (isAndroid) {</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>location.href = config.androidIntent</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                  </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if (Date.now() - startTime &lt; 2000) {</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>location.href = config.playStore</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>}, 1500)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else if (isIos) {</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>var iframe = document.createElement('iframe')</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>iframe.style.display = 'none'</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>iframe.src = config.iosScheme</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>document.body.appendChild(iframe)</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                  </span>setTimeout(function () {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>document.body.removeChild(iframe)</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>}, 100)</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                  </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if (Date.now() - startTime &lt; 2000) {</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>location.href = config.appStore</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>}, 1500)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>alert('모바일 기기에서 접속해 주세요.')</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/html&gt;</p>
-</body>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이트온 선물하기</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f7f6;
+      }
+      .container {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 400px;
+      }
+      h1 {
+        font-size: 1.5rem;
+        color: #333;
+      }
+      p {
+        color: #666;
+        margin-bottom: 24px;
+      }
+      .btn-open {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+      .btn-open:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="validContainer" style="display: none">
+      <h1>서비스를 앱에서 확인하세요</h1>
+      <p>앱이 설치되어 있으면 바로 이동하고,<br />없으시면 설치 페이지로 안내합니다.</p>
+      <button onclick="openDeepLink()" class="btn-open">앱 열기 / 설치하기</button>
+    </div>
+
+    <div class="container" id="invalidContainer" style="display: none">
+      <h1>잘못된 접근입니다.</h1>
+    </div>
+    <script>
+      const params = new URLSearchParams(window.location.search)
+      const goodsId = params.get('goodsId')
+
+      if (goodsId !== null && goodsId !== '') {
+        document.getElementById('validContainer').style.display = ''
+        openDeepLink()
+      } else {
+        document.getElementById('invalidContainer').style.display = ''
+      }
+
+      function openDeepLink() {
+        const config = {
+          iosScheme: 'nateonuc://giftshow-share?product_id=' + goodsId,
+          androidIntent:
+            'intent://giftshow-share?product_id=' + goodsId + '#Intent;scheme=nateonuc;package=Uxpp.UC;end',
+          appStore: 'https://apps.apple.com/kr/app/id362693357',
+          playStore: 'https://play.google.com/store/apps/details?id=Uxpp.UC&hl=ko',
+        }
+
+        const userAgent = navigator.userAgent.toLowerCase()
+        const isAndroid = /android/i.test(userAgent)
+        const isIos = /iphone|ipad|ipod/i.test(userAgent)
+
+        const startTime = Date.now()
+
+        if (isAndroid) {
+          location.href = config.androidIntent
+
+          setTimeout(() => {
+            if (Date.now() - startTime < 2000) {
+              location.href = config.playStore
+            }
+          }, 1500)
+        } else if (isIos) {
+          var iframe = document.createElement('iframe')
+          iframe.style.display = 'none'
+          iframe.src = config.iosScheme
+          document.body.appendChild(iframe)
+
+          setTimeout(function () {
+            document.body.removeChild(iframe)
+          }, 100)
+
+          setTimeout(() => {
+            if (Date.now() - startTime < 2000) {
+              location.href = config.appStore
+            }
+          }, 1500)
+        } else {
+          alert('모바일 기기에서 접속해 주세요.')
+        }
+      }
+    </script>
+  </body>
 </html>
