@@ -60,14 +60,12 @@
     </div>
     <script>
       const params = new URLSearchParams(window.location.search)
-      const goodsId = params.get('goodsId')
+      const goodsId = 68
 
-      if (goodsId !== null && goodsId !== '') {
+    
         document.getElementById('validContainer').style.display = ''
         openDeepLink()
-      } else {
-        document.getElementById('invalidContainer').style.display = ''
-      }
+      
 
       function openDeepLink() {
         const config = {
@@ -93,14 +91,7 @@
             }
           }, 1500)
         } else if (isIos) {
-          var iframe = document.createElement('iframe')
-          iframe.style.display = 'none'
-          iframe.src = config.iosScheme
-          document.body.appendChild(iframe)
-
-          setTimeout(function () {
-            document.body.removeChild(iframe)
-          }, 100)
+            location.href = config.iosScheme
 
           setTimeout(() => {
             if (Date.now() - startTime < 2000) {
