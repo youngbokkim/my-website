@@ -99,13 +99,13 @@
       const isAndroid = /android/i.test(userAgent)
       const isIos = /iphone|ipad|ipod/i.test(userAgent)
 
-      // 자동 실행 제거
       document.getElementById('validContainer').style.display = ''
-
       if (isIos) {
         document.getElementById('iosButtons').style.display = ''
+        openIOSApp()
       } else if (isAndroid) {
         document.getElementById('androidButtons').style.display = ''
+        openAndroidApp()
       } else {
         alert('모바일 기기에서 접속해 주세요.')
       }
