@@ -32,7 +32,8 @@
         margin-bottom: 24px;
       }
       .btn-open {
-        display: inline-block;
+        display: block;
+        width: 100%;
         padding: 12px 24px;
         background-color: #007bff;
         color: white;
@@ -42,65 +43,93 @@
         cursor: pointer;
         border: none;
         font-size: 1rem;
+        margin-bottom: 12px;
+      }
+      .btn-store {
+        background-color: #28a745;
       }
       .btn-open:hover {
-        background-color: #0056b3;
+        opacity: 0.9;
       }
     </style>
   </head>
   <body>
     <div class="container" id="validContainer" style="display: none">
       <h1>서비스를 앱에서 확인하세요</h1>
-      <p>앱이 설치되어 있으면 바로 이동하고,<br />없으시면 설치 페이지로 안내합니다.</p>
-      <button onclick="openDeepLink()" class="btn-open">앱 열기 / 설치하기</button>
+      <p>앱이 설치되어 있으면 열기,<br />없으면 설치 페이지로 이동하세요.</p>
+
+      <!-- iOS 전용 버튼 영역 -->
+      <div id="iosButtons" style="display:none;">
+        <button onclick="openIOSApp()" class="btn-open">
+          앱에서 열기
+        </button>
+
+        <button onclick="goAppStore()" class="btn-open btn-store">
+          앱스토어 이동
+        </button>
+      </div>
+
+      <!-- Android 버튼 -->
+      <div id="androidButtons" style="display:none;">
+        <button onclick="openAndroidApp()" class="btn-open">
+          앱 열기 / 설치하기
+        </button>
+      </div>
     </div>
 
     <div class="container" id="invalidContainer" style="display: none">
       <h1>잘못된 접근입니다.</h1>
     </div>
+
     <script>
-      const params = new URLSearchParams(window.location.search)
       const goodsId = 68
 
-    
-        document.getElementById('validContainer').style.display = ''
-        openDeepLink()
-      
+      const config = {
+        iosScheme: 'nateonuc://giftshow-share?product_id=' + goodsId,
+        androidIntent:
+          'intent://giftshow-share?product_id=' +
+          goodsId +
+          '#Intent;scheme=nateonuc;package=Uxpp.UC;end',
+        appStore: 'https://apps.apple.com/kr/app/id362693357',
+        playStore:
+          'https://play.google.com/store/apps/details?id=Uxpp.UC&hl=ko',
+      }
 
-      function openDeepLink() {
-        const config = {
-          iosScheme: 'nateonuc://giftshow-share?product_id=' + goodsId,
-          androidIntent:
-            'intent://giftshow-share?product_id=' + goodsId + '#Intent;scheme=nateonuc;package=Uxpp.UC;end',
-          appStore: 'https://apps.apple.com/kr/app/id362693357',
-          playStore: 'https://play.google.com/store/apps/details?id=Uxpp.UC&hl=ko',
-        }
+      const userAgent = navigator.userAgent.toLowerCase()
+      const isAndroid = /android/i.test(userAgent)
+      const isIos = /iphone|ipad|ipod/i.test(userAgent)
 
-        const userAgent = navigator.userAgent.toLowerCase()
-        const isAndroid = /android/i.test(userAgent)
-        const isIos = /iphone|ipad|ipod/i.test(userAgent)
+      // 자동 실행 제거
+      document.getElementById('validContainer').style.display = ''
 
+      if (isIos) {
+        document.getElementById('iosButtons').style.display = ''
+      } else if (isAndroid) {
+        document.getElementById('androidButtons').style.display = ''
+      } else {
+        alert('모바일 기기에서 접속해 주세요.')
+      }
+
+      // iOS 앱 열기
+      function openIOSApp() {
+        location.href = config.iosScheme
+      }
+
+      // iOS 앱스토어 이동
+      function goAppStore() {
+        location.href = config.appStore
+      }
+
+      // Android 앱 열기 (설치 안 되어 있으면 PlayStore fallback)
+      function openAndroidApp() {
         const startTime = Date.now()
+        location.href = config.androidIntent
 
-        if (isAndroid) {
-          location.href = config.androidIntent
-
-          setTimeout(() => {
-            if (Date.now() - startTime < 2000) {
-              location.href = config.playStore
-            }
-          }, 1500)
-        } else if (isIos) {
-            location.href = config.iosScheme
-
-          setTimeout(() => {
-            if (Date.now() - startTime < 2000) {
-              location.href = config.appStore
-            }
-          }, 1500)
-        } else {
-          alert('모바일 기기에서 접속해 주세요.')
-        }
+        setTimeout(() => {
+          if (Date.now() - startTime < 2000) {
+            location.href = config.playStore
+          }
+        }, 1500)
       }
     </script>
   </body>
